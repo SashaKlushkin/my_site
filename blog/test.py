@@ -1,5 +1,3 @@
-from django.db import models
-
 
 from django.shortcuts import render
 from .models import Good, Post, Measure, Stock
@@ -11,3 +9,5 @@ for product in products:
         # Stock.objects.filter(good_id=product.id)
     field_name_sum = Stock.objects.aggregate(Sum(product.id))
     print(field_name_sum)
+
+    

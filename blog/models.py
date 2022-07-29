@@ -40,18 +40,17 @@ class Store(models.Model):
 class Stock(models.Model):
     store_id = models.ForeignKey('Store', on_delete=models.PROTECT)
     good_id = models.ForeignKey('Good', on_delete=models.PROTECT)
-    quantity_stock = models.DecimalField(max_digits=5, decimal_places=2)
-
+    quantity_stock = models.IntegerField(blank=True, null=True)
     
     def __int__(self):
         return self.quantity_stock
 
 
 class Order(models.Model):
-    sender_store_id = models.CharField(max_length=100)
-    recipient_store_id = models.CharField(max_length=100)
-    product_id = models.CharField(max_length=100)
-    quantity_id = models.CharField(max_length=100)
+    sender_store_id = models.ForeignKey('Store', on_delete=models.PROTECT, related_name='sender_store')
+    recipient_store_id = models.ForeignKey('Store', on_delete=models.PROTECT, related_name='recipient_store')
+    product_id = models.ForeignKey('Good', on_delete=models.PROTECT)
+    quantity_id = models.DecimalField(max_digits=5, decimal_places=2)
 
-    def __str__(self):
-        return self.title
+    def __int__(self):
+        return self.quantity_id
