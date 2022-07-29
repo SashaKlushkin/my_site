@@ -4,19 +4,29 @@
         <article class="media content-section">
           <div class="media-body">
             <div class="article-metadata">
-                <table>
-                    <colgroup>
-                      <col span="2" style="background:Khaki"><!-- С помощью этой конструкции задаем цвет фона для первых двух столбцов таблицы-->
-                      <col style="background-color:LightCyan"><!-- Задаем цвет фона для следующего (одного) столбца таблицы-->
-                    </colgroup>
+                <table class="rounded">
+                    <td>Склад/Магазин:</td>
+                    <td>Продукт:</td>
+                    <td>Количество продукта:</td>
                     {% for stock in stocks %}<tr>
                         <th>{{ stock.store_id }}</th>
                         <th>{{ stock.good_id }}</th>
-                        <th>{{ stock.quantity_stock }}</th>
-                      
-                      {% endfor %}
+                        <th>{{ stock.quantity_stock }}</th> 
+                    {% endfor %}
                     </tr>
                   </table>
+                  <!-- <table>
+                    <colgroup>
+                      <col span="2" style="background:Khaki"><!-- С помощью этой конструкции задаем цвет фона для первых двух столбцов таблицы-->
+                      <!-- <col style="background-color:LightCyan"><!-- Задаем цвет фона для следующего (одного) столбца таблицы-->
+                    <!-- </colgroup>
+                    {% for stock in stocks %}<tr>
+                        <th>{{ stock.store_id }}</th>
+                        <th>{{ stock.good_id }}</th>
+                        <th>{{ stock.quantity_stock }}</th> 
+                    {% endfor %}
+                    </tr>
+                  </table> -->
 
               
             </div>
